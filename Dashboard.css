@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --mainBtnColor: rgb(32, 204, 98);
+  --secondaryBtnColor: rgb(12, 77, 37); }
+
+ul {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #FFF; }
+
+body {
+  background: #dbe4dc;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif; }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background: var(--mainBtnColor);
+  padding: 15px 30px;
+  vertical-align: middle; }
+  .navbar .navbarBrand {
+    font-size: 20px;
+    font-weight: 700;
+    transition: all .4s ease; }
+    .navbar .navbarBrand:hover {
+      color: #CCC; }
+
+.container main {
+  width: 85%;
+  margin: 20px auto; }
+  .container main .panelBtn {
+    display: flex;
+    flex-direction: row; }
+    .container main .panelBtn li {
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      padding: 10px 20px;
+      background: #a5d6bd;
+      color: #FFF;
+      font-weight: 300;
+      transition: all .4s ease; }
+      .container main .panelBtn li:hover {
+        background: var(--mainBtnColor); }
+      .container main .panelBtn li.active {
+        background: var(--mainBtnColor); }
+  .container main .dashboard {
+    padding-bottom: 30px;
+    background: rgba(255, 255, 255, 0.575);
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0px 5px 3px #888888; }
+    .container main .dashboard h2 {
+      text-align: center;
+      margin: 10px 0;
+      padding: 20px; }
+    .container main .dashboard .patients .patientSearcher {
+      width: 80%;
+      margin: 0 auto; }
+      .container main .dashboard .patients .patientSearcher input {
+        margin-bottom: 40px;
+        width: 100%;
+        text-align: center;
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 5px;
+        font-family: 'Open Sans', sans-serif;
+        background-color: rgba(255, 255, 255, 0.4);
+        border: 1px solid var(--mainBtnColor);
+        background-image: none;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none; }
+        .container main .dashboard .patients .patientSearcher input:focus {
+          outline: 1px solid var(--secondaryBtnColor); }
+    .container main .dashboard table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      margin-bottom: 50px;
+      border: 1px solid var(--secondaryBtnColor); }
+      .container main .dashboard table thead {
+        background: var(--mainBtnColor);
+        color: #FFF; }
+        .container main .dashboard table thead th {
+          width: 250px;
+          padding: 10px 20px; }
+      .container main .dashboard table tbody tr td {
+        text-align: center;
+        padding: 7px 15px; }
+        .container main .dashboard table tbody tr td:nth-child(even) {
+          background: #b1ddba; }
+    .container main .dashboard .addPatient {
+      width: 100%; }
+      .container main .dashboard .addPatient .newPatient {
+        display: flex;
+        width: 80%;
+        margin: 0 auto;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%; }
+        .container main .dashboard .addPatient .newPatient .contactData {
+          width: 45%;
+          display: flex;
+          flex-direction: column; }
+          .container main .dashboard .addPatient .newPatient .contactData .dateBirth {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between; }
+            .container main .dashboard .addPatient .newPatient .contactData .dateBirth select {
+              width: 20%; }
+        .container main .dashboard .addPatient .newPatient .medicalData {
+          width: 45%;
+          display: flex;
+          flex-direction: column; }
+        .container main .dashboard .addPatient .newPatient input, .container main .dashboard .addPatient .newPatient select {
+          font-size: 134x;
+          width: 100%;
+          margin: 10px 0;
+          padding: 5px 10px;
+          font-family: 'Open Sans', sans-serif;
+          background-color: rgba(255, 255, 255, 0.4);
+          border: 1px solid var(--mainBtnColor);
+          background-image: none;
+          background-color: transparent;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none; }
+          .container main .dashboard .addPatient .newPatient input:focus, .container main .dashboard .addPatient .newPatient select:focus {
+            outline: 1px solid var(--secondaryBtnColor); }
+        .container main .dashboard .addPatient .newPatient .cieSearcher {
+          margin: 0 0;
+          width: 100%; }
+          .container main .dashboard .addPatient .newPatient .cieSearcher .diagnostics {
+            font-size: 13px; }
+        .container main .dashboard .addPatient .newPatient .actualDiagnostics {
+          width: 100%;
+          border: none;
+          font-size: 12px; }
+          .container main .dashboard .addPatient .newPatient .actualDiagnostics td {
+            padding: 10px; }
+          .container main .dashboard .addPatient .newPatient .actualDiagnostics .deleteDiagnostic {
+            background: #c81616;
+            color: #FFF;
+            padding: 10px 20px;
+            width: fit-content;
+            float: right;
+            cursor: pointer; }
+
+/*# sourceMappingURL=Dashboard.css.map */

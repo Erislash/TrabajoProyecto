@@ -1,0 +1,103 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    --mainBtnColor: rgb(32, 204, 98);
+    --secondaryBtnColor: rgb(12, 77, 37);
+}
+ul{
+    list-style: none;
+}
+
+body{
+    background: #F2F2F2;
+    background-image: url('IMG/BGsign.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+    
+    .form{
+        margin: 60px auto;
+        background: rgba(#FFF, 0.9);
+        width: 800px;
+        border-radius: 10px;
+
+        .selectAction{
+            
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: center;
+            .btnSelect{
+                width: 50%;
+                background: var(--mainBtnColor);
+                color: #FFF;
+                padding: 20px 0;
+                font-weight: 300;
+                font-size: 35px;
+                transition: all .4s ease;
+                &:hover{
+                    background: var(--secondaryBtnColor);
+                    cursor: pointer;
+                }
+                &.active{
+                    background: var(--secondaryBtnColor);
+                }
+            }
+        }
+        .sign, .log{
+            padding: 30px;
+            .formGroup{
+                display: flex;
+                justify-content: space-around;
+                flex-direction: row;
+                .field{
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    label{
+                        text-align: center;
+                        display: inline-block;
+                    }
+                    input, select{
+                        width: 70%;
+                        margin: 10px auto;
+                        padding: 5px 20px;
+                        font-family: 'Open Sans', sans-serif;
+                        background-color: rgba(#FFF, .4);
+                        border:1px solid var(--mainBtnColor);
+                        background-image:none;
+                        background-color:transparent;
+                        -webkit-box-shadow: none;
+                        -moz-box-shadow: none;
+                        box-shadow: none;
+                        &:focus{
+                            outline: 1px solid var(--secondaryBtnColor);
+                        }
+                    }
+                }
+            }
+            .logBtn{
+                background: var(--mainBtnColor);
+	            color: #fff;
+                border: none;
+                width: 100%;
+                margin-top: 30px;
+	            padding: 20px 10px;
+	            font: inherit;
+	            cursor: pointer;
+                outline: inherit;
+                transition: all .4s ease;
+                &:hover{
+                    background: var(--secondaryBtnColor);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

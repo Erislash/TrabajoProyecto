@@ -1,0 +1,205 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    --mainBtnColor: rgb(32, 204, 98);
+    --secondaryBtnColor: rgb(12, 77, 37);
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #FFF;
+}
+body{
+    background: rgb(219, 228, 220);
+    // background-image: url('IMG/BG2.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    background: var(--mainBtnColor);
+    padding: 15px 30px;
+    vertical-align: middle;
+    .navbarBrand{
+        
+        font-size: 20px;
+        font-weight: 700;
+        transition: all .4s ease;
+        &:hover{
+            color: #CCC;
+        }
+    }
+}
+
+.container{
+    main{
+        width: 85%;
+        margin: 20px auto;
+        .panelBtn{
+            display: flex;
+            flex-direction: row;
+            li{
+                width: 100%;
+                text-align: center;
+                cursor: pointer;
+                padding: 10px 20px;
+                background: rgb(165, 214, 189);
+                color: #FFF;
+                font-weight: 300;
+                transition: all .4s ease;
+                &:hover{
+                    background: var(--mainBtnColor);
+                }
+                &.active{
+                    background: var(--mainBtnColor);
+                }
+            }
+        }
+        .dashboard{
+            padding-bottom: 30px;
+            background: rgba(255, 255, 255, 0.575);
+            border-radius: 5px 5px 0 0 ;
+            box-shadow: 0px 5px 3px #888888;
+            h2{
+                text-align: center;
+                margin: 10px 0;
+                padding: 20px;
+            }
+            .patients{
+                .patientSearcher{
+                    width: 80%;
+                    margin: 0 auto;
+                    input{
+                        margin-bottom: 40px;
+                        width: 100%;
+                        text-align: center;
+                        padding: 10px 20px;
+                        font-size: 20px;
+                        border-radius: 5px;
+                        font-family: 'Open Sans', sans-serif;
+                        background-color: rgba(#FFF, .4);
+                        border:1px solid var(--mainBtnColor);
+                        background-image:none;
+                        background-color:transparent;
+                        -webkit-box-shadow: none;
+                        -moz-box-shadow: none;
+                        box-shadow: none;
+                        &:focus{
+                            outline: 1px solid var(--secondaryBtnColor);
+                        }
+                    }
+                }
+            }
+            table {
+                margin: 0 auto;
+                border-collapse: collapse;
+                margin-bottom: 50px;
+                border: 1px solid var(--secondaryBtnColor);
+                thead{
+                    background: var(--mainBtnColor);
+                    color: #FFF;
+
+                    th{
+                        width: 250px;
+                        padding: 10px 20px;
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            text-align: center;
+                            padding: 7px 15px;
+                            &:nth-child(even){
+                                background: rgb(177, 221, 186);
+                            }
+                        }
+                    }
+                }
+              }
+              .addPatient{
+                  width: 100%;
+                  .newPatient{
+                    display: flex;
+                    width: 80%;
+                    margin: 0 auto;
+                    
+                    
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 80%;
+
+                    .contactData{
+                        width: 45%;
+                        display: flex;
+                        flex-direction: column;
+                        .dateBirth{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            select{
+                                width: 20%;
+                            }
+                        }
+                    }
+                    .medicalData{
+                        width: 45%;
+                        display: flex;
+                        flex-direction: column;
+                        
+
+                    }
+
+                    input, select{
+                        font-size: 134x;
+                        width: 100%;
+                        margin: 10px 0;
+                        padding: 5px 10px;
+                        font-family: 'Open Sans', sans-serif;
+                        background-color: rgba(#FFF, .4);
+                        border:1px solid var(--mainBtnColor);
+                        background-image:none;
+                        background-color:transparent;
+                        -webkit-box-shadow: none;
+                        -moz-box-shadow: none;
+                        box-shadow: none;
+                        &:focus{
+                            outline: 1px solid var(--secondaryBtnColor);
+                        }
+                    }
+
+                    .cieSearcher{
+                        
+                        margin: 0 0;
+                        width: 100%;
+                        .diagnostics{
+                            font-size: 13px;
+                        }
+                    }
+                    .actualDiagnostics{
+                        width: 100%;
+                        border: none;
+                        font-size: 12px;
+                        td{
+                            padding: 10px;
+                        }
+                        .deleteDiagnostic{
+                            background: rgb(200, 22, 22);
+                            color: #FFF;
+                            padding: 10px 20px;
+                            width: fit-content;
+                            float: right;
+                            cursor: pointer;
+                        }
+                    }
+                  }
+              }
+        }
+    }
+}

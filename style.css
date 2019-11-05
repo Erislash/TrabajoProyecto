@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --mainBtnColor: rgb(32, 204, 98);
+  --secondaryBtnColor: rgb(12, 77, 37); }
+
+ul {
+  list-style: none; }
+
+body {
+  background: #F2F2F2;
+  background-image: url("IMG/BGsign.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Open Sans', sans-serif; }
+
+.container .form {
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.9);
+  width: 800px;
+  border-radius: 10px; }
+  .container .form .selectAction {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center; }
+    .container .form .selectAction .btnSelect {
+      width: 50%;
+      background: var(--mainBtnColor);
+      color: #FFF;
+      padding: 20px 0;
+      font-weight: 300;
+      font-size: 35px;
+      transition: all .4s ease; }
+      .container .form .selectAction .btnSelect:hover {
+        background: var(--secondaryBtnColor);
+        cursor: pointer; }
+      .container .form .selectAction .btnSelect.active {
+        background: var(--secondaryBtnColor); }
+  .container .form .sign, .container .form .log {
+    padding: 30px; }
+    .container .form .sign .formGroup, .container .form .log .formGroup {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: row; }
+      .container .form .sign .formGroup .field, .container .form .log .formGroup .field {
+        display: flex;
+        flex-direction: column;
+        width: 100%; }
+        .container .form .sign .formGroup .field label, .container .form .log .formGroup .field label {
+          text-align: center;
+          display: inline-block; }
+        .container .form .sign .formGroup .field input, .container .form .sign .formGroup .field select, .container .form .log .formGroup .field input, .container .form .log .formGroup .field select {
+          width: 70%;
+          margin: 10px auto;
+          padding: 5px 20px;
+          font-family: 'Open Sans', sans-serif;
+          background-color: rgba(255, 255, 255, 0.4);
+          border: 1px solid var(--mainBtnColor);
+          background-image: none;
+          background-color: transparent;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none; }
+          .container .form .sign .formGroup .field input:focus, .container .form .sign .formGroup .field select:focus, .container .form .log .formGroup .field input:focus, .container .form .log .formGroup .field select:focus {
+            outline: 1px solid var(--secondaryBtnColor); }
+    .container .form .sign .logBtn, .container .form .log .logBtn {
+      background: var(--mainBtnColor);
+      color: #fff;
+      border: none;
+      width: 100%;
+      margin-top: 30px;
+      padding: 20px 10px;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      transition: all .4s ease; }
+      .container .form .sign .logBtn:hover, .container .form .log .logBtn:hover {
+        background: var(--secondaryBtnColor);
+        cursor: pointer; }
+
+/*# sourceMappingURL=Style.css.map */
