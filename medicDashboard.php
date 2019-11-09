@@ -72,24 +72,23 @@
 
                 <article id="addPatient" class="addPatient">
                 <h2>AÑADIR NUEVO PACIENTE</h2>
-                    <form class="newPatient" action="" method="POST">
+                    <form action="savePatient.php" class="newPatient" id="registrationForm" method="POST">
                         <div class="contactData">
                             <h3>Datos Personales</h3>
-                            <input type="text" name="firstName"  placeholder="Nombre(s)">
-                            <input type="text" name="lastName"  placeholder="Apellido(s)">
-                            <h5>Fecha de Nacimiento</h5>
+                            <input type="text" name="name" placeholder="Nombre(s)">
+                            <input type="text" name="surname" placeholder="Apellido(s)">                            <h5>Fecha de Nacimiento</h5>
                             <div class="dateBirth">
                                 
-                                <select class="" name="" id="birthDay">
-                                    <option value="">Día</option>
+                                <select class="" name="birthDay" id="birthDay">
+                                    <option class="selectDefault" value="">Día</option>
                                     <?php
                                         for ($i=1; $i<=28; $i++) {
                                             echo "<option value='$i'>$i</option>";
                                         } 
                                     ?>
                                 </select>
-                                <select class="selectBirth" name="" id="birthMonth">
-                                    <option id="birthMonthPlaceHolder" value="">Mes</option>
+                                <select class="selectBirth" name="birthMonth" id="birthMonth">
+                                    <option class="selectDefault" value="">Mes</option>
                                     <?php 
                                         for ($i=1; $i<=11; $i++) {
                                             $month = date('F', mktime(0,0,0,$i, 1, date('Y')));
@@ -97,8 +96,8 @@
                                         }     
                                     ?>                     
                                 </select>
-                                <select class="selectBirth" name="" id="birthYear">
-                                    <option id="birthYearPlaceHolder" value="">Año</option>
+                                <select class="selectBirth" name="birthYear" id="birthYear">
+                                    <option class="selectDefault" value="">Año</option>
                                     <?php 
                                         $year = date("Y");
                                         for ($i=1; $i<=120; $i++) {
@@ -109,8 +108,8 @@
                                 </select>
                             </div>
 
-                            <select name="" id="genderSelect">
-                                <option id="genderPlaceHolder" value="">Género</option>
+                            <select name="genderSelect" id="genderSelect">
+                                <option class="selectDefault" value="">Seleccione su Género</option>
                                 <option value="">Hombre</option>
                                 <option value="">Mujer</option>
                             </select>
@@ -118,49 +117,91 @@
                             <input type="number" name="id"  placeholder="DNI">
 
                             <h3>Datos de Contacto</h3>
-                            <input type="text" name="" placeholder="Teléfono de Casa">
-                            <input type="text" name="" placeholder="Teléfono Móvil">
-                            <input type="text" name="" placeholder="Correo Electrónico">
+                            <input type="text" name="homePhone" placeholder="Teléfono de Casa">
+                            <input type="text" name="mobilePhone" placeholder="Teléfono Móvil">
+                            <input type="text" name="email" placeholder="Correo Electrónico">
 
                             <h3>Datos de Dirección</h3>
                             <h5>Dirección de Empadronamiento</h5>
-                            <input type="text" name="" placeholder="Tipo de Vía">
-                            <input type="text" name="" placeholder="Nombre de la Vía">
-                            <input type="text" name="" placeholder="Número">
-                            <input type="text" name="" placeholder="Piso">
-                            <input type="text" name="" placeholder="Escalera">
-                            <input type="text" name="" placeholder="Código Postal">
-                            <input type="text" name="" placeholder="Municipio">
-                            <input type="text" name="" placeholder="Población">
-                            <input type="text" name="" placeholder="Provincia">
-                            <input type="text" name="" placeholder="País">
+                            <input type="text" name="streetType" placeholder="Tipo de Vía">
+                            <input type="text" name="streetName" placeholder="Nombre de la Vía">
+                            <input type="text" name="streetNumber" placeholder="Número">
+                            <input type="text" name="floorNumber" placeholder="Piso">
+                            <input type="text" name="stairNumber" placeholder="Escalera">
+                            <input type="text" name="postalCode" placeholder="Código Postal">
+                            <input type="text" name="city" placeholder="Ciudad">
+                            <input type="text" name="state" placeholder="Provincia">
+                            <input type="text" name="country" placeholder="País">
 
                             <h5>Dirección de Contacto</h5>
-                            <input type="text" name="" placeholder="Tipo de Vía">
-                            <input type="text" name="" placeholder="Nombre de la Vía">
-                            <input type="text" name="" placeholder="Número">
-                            <input type="text" name="" placeholder="Piso">
-                            <input type="text" name="" placeholder="Escalera">
-                            <input type="text" name="" placeholder="Código Postal">
-                            <input type="text" name="" placeholder="Municipio">
-                            <input type="text" name="" placeholder="Población">
-                            <input type="text" name="" placeholder="Provincia">
-                            <input type="text" name="" placeholder="País">
+                            <input type="text" name="streetTypeContact" placeholder="Tipo de Vía">
+                            <input type="text" name="streetNameContact" placeholder="Nombre de la Vía">
+                            <input type="text" name="streetNumberContact" placeholder="Número">
+                            <input type="text" name="floorNumberContact" placeholder="Piso">
+                            <input type="text" name="stairNumberContact" placeholder="Escalera">
+                            <input type="text" name="postalCodeContact" placeholder="Código Postal">
+                            <input type="text" name="cityContact" placeholder="Municipio">
+                            <input type="text" name="stateContact" placeholder="Provincia">
+                            <input type="text" name="countryContact" placeholder="País">
 
 
                             <h3>Datos de Acceso</h3>
-                            <input type="text" name="" placeholder="Usuario">
-                            <input type="password" name="" placeholder="Contraseña">
-                            <input type="password" name="" placeholder="Confirmar Contraseña">
+                            <input type="text" name="user" placeholder="Usuario">
+                            <input type="password" name="password" placeholder="Contraseña">
+                            <input type="password" name="rePassword" placeholder="Confirmar Contraseña">
+
+                            <button class="createPatientBtn" id="createPatientBtn">Crear Paciente</button>
                         </div>
 
 
                         <div class="medicalData">
+                            <div>
+                                <h3>Asignación de Dispositivo</h3>
+                                <h4>Dispositivo</h4>
+                                <select name="hardwareId">
+                                    <option class="selectDefault" value="">Seleccionar ID del Dispositivo</option>
+                                    <option value="12345678">12345678</option>
+                                    <option value="12354332">12354332</option>
+                                    <option value="48483934">48483934</option>
+                                    <option value="3483">3483</option>
+                                </select>
+                                <h4>Funciones</h4>
+                                <hr>
+                                <h5>Botón 1:</h5>
+                                <p>Aviso de Consumo</p><br>
+                                <h5>Botón 2:</h5>
+                                <select name="function2">
+                                    <option class="selectDefault" value="">Seleccionar función 2</option>
+                                    <option value="">No asignar</option>
+                                    <option value="Lorem1">Lorem1</option>
+                                    <option value="Lorem2">Lorem2</option>
+                                    <option value="Lorem3">Lorem3</option>
+                                    <option value="Lorem4">Lorem4</option>
+                                </select><br><br>
+                                <h5>Botón 3:</h5>
+                                <select name="function3">
+                                    <option class="selectDefault" value="">Seleccionar función 3</option>
+                                    <option value="">No asignar</option>
+                                    <option value="Lorem1">Lorem1</option>
+                                    <option value="Lorem2">Lorem2</option>
+                                    <option value="Lorem3">Lorem3</option>
+                                    <option value="Lorem4">Lorem4</option>
+                                </select><br><br>
+                                <h5>Botón 4:</h5>
+                                <select name="function4">
+                                    <option class="selectDefault" value="">Seleccionar función 4</option>
+                                    <option value="">No asignar</option>
+                                    <option value="Lorem1">Lorem1</option>
+                                    <option value="Lorem2">Lorem2</option>
+                                    <option value="Lorem3">Lorem3</option>
+                                    <option value="Lorem4">Lorem4</option>
+                                </select><br><br>
+                            </div>
                             <div class="cieSearcher">
                                 <h3>Diagnósticos Según CIE-10</h3>
                                 <input type="search" id="diagnosticSearcher" placeholder="Busque el diagnóstico">
-                                <select class="diagnostics" id="diagnostics" name="diagnostic">
-                                    <option value="">Seleccione el Diagnóstico</option>
+                                <select class="diagnostics" id="diagnostics">
+                                    <option class="selectDefault" value="">Seleccione el Diagnóstico</option>
                                 </select>
                             </div>  
                             

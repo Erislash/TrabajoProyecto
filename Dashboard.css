@@ -18,6 +18,10 @@ body {
   background-size: cover;
   font-family: 'Open Sans', sans-serif; }
 
+input, button {
+  border: none;
+  outline: none; }
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -114,6 +118,17 @@ body {
             justify-content: space-between; }
             .container main .dashboard .addPatient .newPatient .contactData .dateBirth select {
               width: 20%; }
+          .container main .dashboard .addPatient .newPatient .contactData .createPatientBtn {
+            background: var(--mainBtnColor);
+            text-align: center;
+            color: #FFF;
+            padding: 10px 20px;
+            box-shadow: 0px 1px 1px #000;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all .4s ease; }
+            .container main .dashboard .addPatient .newPatient .contactData .createPatientBtn:hover {
+              background: var(--secondaryBtnColor); }
         .container main .dashboard .addPatient .newPatient .medicalData {
           width: 45%;
           display: flex;

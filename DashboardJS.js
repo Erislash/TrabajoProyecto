@@ -14,23 +14,17 @@ addPatientForm.hide();
 
 patientsBtn.click(function(){
     hideArticles(notificationsForm, addPatientForm, patientsForm);
-    patientsBtn.addClass("active");
-    notificationsBtn.removeClass("active");
-    addPatientBtn.removeClass("active");
+    activeButtons(patientsBtn, notificationsBtn, addPatientBtn);
 });
 
 notificationsBtn.click(function(){
     hideArticles(patientsForm, addPatientForm, notificationsForm);
-    notificationsBtn.addClass("active");
-    patientsBtn.removeClass("active");
-    addPatientBtn.removeClass("active");
+    activeButtons(notificationsBtn, patientsBtn, addPatientBtn);
 });
 
 addPatientBtn.click(function(){
     hideArticles(notificationsForm, patientsForm, addPatientForm);
-    addPatientBtn.addClass("active");
-    notificationsBtn.removeClass("active");
-    patientsBtn.removeClass("active");
+    activeButtons(addPatientBtn, notificationsBtn, patientsBtn);
 });
 
 function hideArticles(hide1, hide2, show){
@@ -38,34 +32,39 @@ function hideArticles(hide1, hide2, show){
     hide2.hide();
     show.show();
 }
+function activeButtons(btn1, btn2, btn3){
+    btn1.addClass("active");
+    btn2.removeClass("active");
+    btn3.removeClass("active");
+}
 
 
-$('#genderSelect').change(function(){
-    $('#genderPlaceHolder').hide();
-});
+
+// $('#genderSelect').change(function(){
+//     $('#genderPlaceHolder').hide();
+// });
 
 
 $('#diagnosticSearcher').keyup(function(e){
     let txt = $(this).val();
     let cieList = $('#diagnostics');
     let selectedDiagnostics = $('#cieList');
-    let templateDiagnostic = "";
-
+    let templateDiagnostic = selectedDiagnostics.html();
     let deleteDiagnostic;
 
 
 
-if(txt.length >= 3){
-    $.ajax({
-        url:"listCie10.php",
-        method:"post",
-        data:{search:txt},
-        dataType:"text",
-        success:function(data){
-            let diagnostics = JSON.parse(data);
-            let template = "";
-        template += `<option value="">Seleccione el Diagnóstico</option>`;
-            diagnostics.forEach(diagnostic =>{
+    if(txt.length >= 3){
+        $.ajax({
+            url:"listCie10.php",
+            method:"post",
+            data:{search:txt},
+            dataType:"text",
+            success:function(data){
+                let diagnostics = JSON.parse(data);
+                let template = "";
+                template += `<option value="">Seleccione el Diagnóstico</option>`;
+                diagnostics.forEach(diagnostic =>{
                 template += `<option class="diag"> <b> ${diagnostic.code} <b/> - <span>${diagnostic.tag}</span></option>`;
             })
             cieList.html(template);
@@ -87,8 +86,6 @@ if(txt.length >= 3){
                     $(this).parent().parent().remove()
                     templateDiagnostic = selectedDiagnostics.html();
                 });
-
-                
             });
         }
     });
@@ -107,11 +104,23 @@ function daysInMonth(month, year) {
 birthSelector.change(function(){
     let daysCount = daysInMonth(months.val(), years.val());
     let options = ``;
-    options+=`<option value="">Día</option>`;
+    // options+=`<option class="selectDefault" value="">Día</option>`;
     for(let i=1; i <= daysCount; i++){
         options+=`<option value="${i}">${i}</option>`;
     }
     days.html(options);
 });
 
+let selectDefault = $('.selectDefault');
 
+selectDefault.parent().change(function(){
+    $(this).children('.selectDefault').remove();
+});
+
+
+$('body').on("click", "#diagnostics", function (e) {
+    $(this).parent().is(".open") && e.stopPropagation();
+});
+$("#diagnostics").click(function(e){
+    e.stopPropagation();
+ })
