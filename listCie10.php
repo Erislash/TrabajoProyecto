@@ -1,26 +1,10 @@
 <?php
-    $host = 'localhost';
-    $db   = 'medical';
-    $user = 'root';
-    $pass = '';
-    $charset = 'utf8';
-    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-    $options = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
-    try {
-         $pdo = new PDO($dsn, $user, $pass, $options);
-    } catch (\PDOException $e) {
-         throw new \PDOException($e->getMessage(), (int)$e->getCode());
-    }
-
     if(isset($_POST)){
+        require_once('connection.php');
         $searched = (isset($_POST['search'])) ? $_POST['search'] : null;
 
         if($_POST['search'] != null){
-            $sql = $pdo->prepare("SELECT * FROM cie10 WHERE etiqueta LIKE ?");
+            $sql = $connection->prepare("SELECT * FROM cie10 WHERE etiqueta LIKE ? LIMIT 10");
             $sql->execute(["%".$searched."%"]);
 
             
@@ -38,8 +22,8 @@
                 echo($jsonString);
             }else{
                 $json[] = array(
-                    'code' => "No hay resultado",
-                    'tag' => "No se encontró ningún diagnostico que coincida con lo ingresado"
+                    'code' => "No",
+                    'tag' => ""
                 );
                 $jsonString = json_encode($json);
                 echo($jsonString);

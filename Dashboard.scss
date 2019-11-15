@@ -74,6 +74,29 @@ input, button{ border:none; outline:none;}
                 padding: 20px;
             }
             .patients{
+                width: 80%;
+                margin: 0 auto;
+                .patientsTable{
+                    border: none;
+                    box-shadow: 0px 5px 10px #000;
+                    tr{
+                        cursor: pointer;
+                        border-bottom: 2px solid rgba(#FFF, .4);
+                        transition: all .4s ease;
+                        
+
+                        &:hover{
+                            background: #CCC;
+                        }
+
+                        td{
+                            text-align: left;
+                        }
+                        th{
+                            background: var(--mainBtnColor);
+                        }
+                    }
+                }
                 .patientSearcher{
                     width: 80%;
                     margin: 0 auto;
@@ -104,12 +127,13 @@ input, button{ border:none; outline:none;}
                 margin-bottom: 50px;
                 border: 1px solid var(--secondaryBtnColor);
                 thead{
-                    background: var(--mainBtnColor);
+                    
                     color: #FFF;
 
                     th{
                         width: 250px;
                         padding: 10px 20px;
+                        background: var(--mainBtnColor);
                     }
                 }
                 tbody{
@@ -117,9 +141,6 @@ input, button{ border:none; outline:none;}
                         td{
                             text-align: center;
                             padding: 7px 15px;
-                            &:nth-child(even){
-                                background: rgb(177, 221, 186);
-                            }
                         }
                     }
                 }
@@ -193,15 +214,43 @@ input, button{ border:none; outline:none;}
                         
                         margin: 0 0;
                         width: 100%;
+                        .diagnosticsDropbox{
+                            .buttonDropbox{
+                                width: 100%;
+                                padding: 10px 20px;
+                                background: var(--mainBtnColor);
+                                color: #FFF;
+                                cursor: pointer;
+                                transition: all .4s ease;
+                                &:hover{
+                                    background: var(--secondaryBtnColor);
+                                    
+                                }
+                            }
+
+                        }
                         .diagnostics{
                             font-size: 13px;
+                            background: rgb(172, 214, 200);
+                            color: #000;
+                            li{
+                                padding: 10px 20px;
+                                cursor: pointer;
+                                transition: all .4s ease;
+                                border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+                                &:hover{
+                                    background: rgb(104, 151, 135);
+                                }
+                            }
                         }
+
                     }
                     .actualDiagnostics{
                         width: 100%;
                         border: none;
                         font-size: 12px;
-                        td{
+                        font-weight: 700;
+                        td, .noDiag{
                             padding: 10px;
                         }
                         .deleteDiagnostic{

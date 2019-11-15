@@ -63,42 +63,56 @@ input, button {
       text-align: center;
       margin: 10px 0;
       padding: 20px; }
-    .container main .dashboard .patients .patientSearcher {
+    .container main .dashboard .patients {
       width: 80%;
       margin: 0 auto; }
-      .container main .dashboard .patients .patientSearcher input {
-        margin-bottom: 40px;
-        width: 100%;
-        text-align: center;
-        padding: 10px 20px;
-        font-size: 20px;
-        border-radius: 5px;
-        font-family: 'Open Sans', sans-serif;
-        background-color: rgba(255, 255, 255, 0.4);
-        border: 1px solid var(--mainBtnColor);
-        background-image: none;
-        background-color: transparent;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none; }
-        .container main .dashboard .patients .patientSearcher input:focus {
-          outline: 1px solid var(--secondaryBtnColor); }
+      .container main .dashboard .patients .patientsTable {
+        border: none;
+        box-shadow: 0px 5px 10px #000; }
+        .container main .dashboard .patients .patientsTable tr {
+          cursor: pointer;
+          border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+          transition: all .4s ease; }
+          .container main .dashboard .patients .patientsTable tr:hover {
+            background: #CCC; }
+          .container main .dashboard .patients .patientsTable tr td {
+            text-align: left; }
+          .container main .dashboard .patients .patientsTable tr th {
+            background: var(--mainBtnColor); }
+      .container main .dashboard .patients .patientSearcher {
+        width: 80%;
+        margin: 0 auto; }
+        .container main .dashboard .patients .patientSearcher input {
+          margin-bottom: 40px;
+          width: 100%;
+          text-align: center;
+          padding: 10px 20px;
+          font-size: 20px;
+          border-radius: 5px;
+          font-family: 'Open Sans', sans-serif;
+          background-color: rgba(255, 255, 255, 0.4);
+          border: 1px solid var(--mainBtnColor);
+          background-image: none;
+          background-color: transparent;
+          -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none; }
+          .container main .dashboard .patients .patientSearcher input:focus {
+            outline: 1px solid var(--secondaryBtnColor); }
     .container main .dashboard table {
       margin: 0 auto;
       border-collapse: collapse;
       margin-bottom: 50px;
       border: 1px solid var(--secondaryBtnColor); }
       .container main .dashboard table thead {
-        background: var(--mainBtnColor);
         color: #FFF; }
         .container main .dashboard table thead th {
           width: 250px;
-          padding: 10px 20px; }
+          padding: 10px 20px;
+          background: var(--mainBtnColor); }
       .container main .dashboard table tbody tr td {
         text-align: center;
         padding: 7px 15px; }
-        .container main .dashboard table tbody tr td:nth-child(even) {
-          background: #b1ddba; }
     .container main .dashboard .addPatient {
       width: 100%; }
       .container main .dashboard .addPatient .newPatient {
@@ -151,13 +165,32 @@ input, button {
         .container main .dashboard .addPatient .newPatient .cieSearcher {
           margin: 0 0;
           width: 100%; }
+          .container main .dashboard .addPatient .newPatient .cieSearcher .diagnosticsDropbox .buttonDropbox {
+            width: 100%;
+            padding: 10px 20px;
+            background: var(--mainBtnColor);
+            color: #FFF;
+            cursor: pointer;
+            transition: all .4s ease; }
+            .container main .dashboard .addPatient .newPatient .cieSearcher .diagnosticsDropbox .buttonDropbox:hover {
+              background: var(--secondaryBtnColor); }
           .container main .dashboard .addPatient .newPatient .cieSearcher .diagnostics {
-            font-size: 13px; }
+            font-size: 13px;
+            background: #acd6c8;
+            color: #000; }
+            .container main .dashboard .addPatient .newPatient .cieSearcher .diagnostics li {
+              padding: 10px 20px;
+              cursor: pointer;
+              transition: all .4s ease;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+              .container main .dashboard .addPatient .newPatient .cieSearcher .diagnostics li:hover {
+                background: #689787; }
         .container main .dashboard .addPatient .newPatient .actualDiagnostics {
           width: 100%;
           border: none;
-          font-size: 12px; }
-          .container main .dashboard .addPatient .newPatient .actualDiagnostics td {
+          font-size: 12px;
+          font-weight: 700; }
+          .container main .dashboard .addPatient .newPatient .actualDiagnostics td, .container main .dashboard .addPatient .newPatient .actualDiagnostics .noDiag {
             padding: 10px; }
           .container main .dashboard .addPatient .newPatient .actualDiagnostics .deleteDiagnostic {
             background: #c81616;

@@ -43,16 +43,21 @@ function activeButtons(btn1, btn2, btn3){
 // $('#genderSelect').change(function(){
 //     $('#genderPlaceHolder').hide();
 // });
-
+let cieList = $('#diagnostics');
+cieList.hide();
+let buttonArrow = false;
 
 $('#diagnosticSearcher').keyup(function(e){
     let txt = $(this).val();
-    let cieList = $('#diagnostics');
+    cieList = $('#diagnostics');
     let selectedDiagnostics = $('#cieList');
     let templateDiagnostic = selectedDiagnostics.html();
     let deleteDiagnostic;
+    let buttonDropbox = $('#buttonDropbox');
+    
+   
 
-
+    
 
     if(txt.length >= 3){
         $.ajax({
@@ -63,17 +68,24 @@ $('#diagnosticSearcher').keyup(function(e){
             success:function(data){
                 let diagnostics = JSON.parse(data);
                 let template = "";
-                template += `<option value="">Seleccione el Diagnóstico</option>`;
+                // template += `<option value="">Seleccione el Diagnóstico</option>`;
                 diagnostics.forEach(diagnostic =>{
-                template += `<option class="diag"> <b> ${diagnostic.code} <b/> - <span>${diagnostic.tag}</span></option>`;
+                    if(diagnostic.code != "No")
+                        template += `<li class="diag"> <b> ${diagnostic.code} <b/> || <span>${diagnostic.tag}</span></li>`;
+                    else   
+                        template +=`<li class="">No se encontraron diagnósticos</li>`;
             })
             cieList.html(template);
             diag = $('.diag');
 
-            cieList.change(function(){
-                if($(this).val() != ""){
+            // diag.click(function(){
+            //     console.log($(this).text());
+            // });
+
+            diag.click(function(){
+                if($(this).text() != ""){
                     templateDiagnostic += `<tr>`
-                    templateDiagnostic += `<td>${$(this).val()}<input type='hidden' name='diagnostics[]' value='${$(this).val()}'/></td>`;
+                    templateDiagnostic += `<td>${$(this).text()}<input type='hidden' name='diagnostics[]' value='${$(this).text()}'/></td>`;
                     templateDiagnostic += `<td><div class="deleteDiagnostic">BORRAR</div></td>`;
                     templateDiagnostic += `</tr>`;
                 }
@@ -90,7 +102,16 @@ $('#diagnosticSearcher').keyup(function(e){
         }
     });
 }
+    // cieList.hide();
+    buttonDropbox.off('click').click(function(){
+        buttonArrow = !buttonArrow;
+        let newDirection = (buttonArrow) ? `<i class="fas fa-angle-up"></i>` :  `<i class="fas fa-angle-down"></i>`;
+        buttonDropbox.html(`Seleccione el Diagnóstico ${newDirection}`);
+        cieList.slideToggle();
+    });
 });
+
+
 
 let days = $('#birthDay');
 let months = $('#birthMonth');
@@ -118,9 +139,7 @@ selectDefault.parent().change(function(){
 });
 
 
-$('body').on("click", "#diagnostics", function (e) {
-    $(this).parent().is(".open") && e.stopPropagation();
-});
-$("#diagnostics").click(function(e){
-    e.stopPropagation();
- })
+
+
+
+
