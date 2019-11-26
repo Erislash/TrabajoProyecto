@@ -10,9 +10,15 @@
     <script src="https://kit.fontawesome.com/5bf93b33ff.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="#" class="navbarBrand">Medical Service</a>
-        <a href="#" class="">Bienvenido Doctor/a Bob!</a>
+<nav class="navbar">
+        <div class="text">
+            <a href="#" class="navbarBrand">Servicio Médico SP</a>
+            <a href="#" class="">Bienvenido Doctor/a Bob!</a>
+        </div>
+        
+        <div class="logo">
+            <img src="IMG/logo.png" alt="">
+        </div>
     </nav>
 
     <div class="container">
@@ -127,7 +133,7 @@
                                     <?php 
                                         $year = date("Y");
                                         for ($i=1; $i<=120; $i++) {
-                                            echo "<option value='$i'>$year</option>";
+                                            echo "<option value='$year'>$year</option>";
                                             $year--;
                                         }     
                                     ?>                           
@@ -157,36 +163,42 @@
                             <h5>Dirección de Empadronamiento</h5>
                             <?= (isset($_SESSION['patientRegisterErrors']['adress'])) ? $_SESSION['patientRegisterErrors']['adress'] : null ?>
                             <!-- <input type="text" name="streetType" placeholder="Tipo de Vía"> -->
-                            <input type="text" name="streetName" placeholder="Nombre de la Vía">
-                            <input type="text" name="streetNumber" placeholder="Número">
-                            <input type="text" name="departamentNumber" placeholder="Número de Departamento">
-                            <input type="number" name="floorNumber" placeholder="Piso">
+                            <input type="text" id="streetName" name="streetName" placeholder="Nombre de la Vía">
+                            <input type="text" id="streetNumber" name="streetNumber" placeholder="Número">
+                            <input type="text" id="departamentNumber" name="departamentNumber" placeholder="Número de Departamento">
+                            <input type="number" id="floorNumber" name="floorNumber" placeholder="Piso">
                             <!-- <input type="text" name="stairNumber" placeholder="Escalera"> -->
                             <?= (isset($_SESSION['patientRegisterErrors']['postalCode'])) ? $_SESSION['patientRegisterErrors']['postalCode'] : null ?>
-                            <input type="text" name="postalCode" placeholder="Código Postal">
+                            <input type="text" id="postalCode" name="postalCode" placeholder="Código Postal">
                             <?= (isset($_SESSION['patientRegisterErrors']['city'])) ? $_SESSION['patientRegisterErrors']['city'] : null ?>
-                            <input type="text" name="city" placeholder="Ciudad">
+                            <input type="text" id="city" name="city" placeholder="Ciudad">
                             <?= (isset($_SESSION['patientRegisterErrors']['state'])) ? $_SESSION['patientRegisterErrors']['state'] : null ?>
-                            <input type="text" name="state" placeholder="Provincia">
+                            <input type="text" id="state" name="state" placeholder="Provincia">
                             <?= (isset($_SESSION['patientRegisterErrors']['country'])) ? $_SESSION['patientRegisterErrors']['country'] : null ?>
-                            <input type="text" name="country" placeholder="País">
+                            <input type="text" id="country" name="country" placeholder="País">
 
                             <h5>Dirección de Contacto</h5>
+                            
+                            <div class="sameAdress" id="sameAdress">
+                                Misma dirección
+                            </div>
+
+
                             <!-- <input type="text" name="streetTypeContact" placeholder="Tipo de Vía"> -->
                             <?= (isset($_SESSION['patientRegisterErrors']['adressContact'])) ? $_SESSION['patientRegisterErrors']['adressContact'] : null ?>
-                            <input type="text" name="streetNameContact" placeholder="Nombre de la Vía">
-                            <input type="number" name="streetNumberContact" placeholder="Número">
-                            <input type="number" name="departamentNumberContact" placeholder="Número de Departamento">
-                            <input type="number" name="floorNumberContact" placeholder="Piso">
+                            <input type="text" id="streetNameContact" name="streetNameContact" placeholder="Nombre de la Vía">
+                            <input type="number" id="streetNumberContact" name="streetNumberContact" placeholder="Número">
+                            <input type="text" id="departamentNumberContact" name="departamentNumberContact" placeholder="Número de Departamento">
+                            <input type="number" id="floorNumberContact" name="floorNumberContact" placeholder="Piso">
                             <!-- <input type="text" name="stairNumberContact" placeholder="Escalera"> -->
                             <?= (isset($_SESSION['patientRegisterErrors']['postalCodeContact'])) ? $_SESSION['patientRegisterErrors']['postalCodeContact'] : null ?>
-                            <input type="text" name="postalCodeContact" placeholder="Código Postal">
+                            <input type="text" id="postalCodeContact" name="postalCodeContact" placeholder="Código Postal">
                             <?= (isset($_SESSION['patientRegisterErrors']['cityContact'])) ? $_SESSION['patientRegisterErrors']['cityContact'] : null ?>
-                            <input type="text" name="cityContact" placeholder="Ciudad">
+                            <input type="text" id="cityContact" name="cityContact" placeholder="Ciudad">
                             <?= (isset($_SESSION['patientRegisterErrors']['stateContact'])) ? $_SESSION['patientRegisterErrors']['stateContact'] : null ?>
-                            <input type="text" name="stateContact" placeholder="Provincia">
+                            <input type="text" id="stateContact" name="stateContact" placeholder="Provincia">
                             <?= (isset($_SESSION['patientRegisterErrors']['countryContact'])) ? $_SESSION['patientRegisterErrors']['countryContact'] : null ?>
-                            <input type="text" name="countryContact" placeholder="País">
+                            <input type="text" id="countryContact" name="countryContact" placeholder="País">
 
 
                             <h3>Datos de Acceso</h3>
@@ -279,3 +291,8 @@
 <script src="JQuery.js"></script>
 <script src="DashboardJS.js"></script>
 </html>
+
+<?php
+    $_SESSION['patientRegisterErrors'] = NULL;
+    unset($_SESSION['patientRegisterErrors']);
+?>

@@ -22,19 +22,83 @@ body{
 }
 input, button{ border:none; outline:none;}
 
-.navbar{
+
+.lightBox{
+    position: fixed;
+    background: rgba(#000, .4);
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
-    background: var(--mainBtnColor);
-    padding: 15px 30px;
-    vertical-align: middle;
-    .navbarBrand{
+    justify-content: center;
+    align-items: center;
+
+    .allData{
+        padding: 20px;
+        display: inline-block;
+        width: 800px;
+        max-height: 400px;
+        overflow: auto;
+        background: #FFF;
+        border-radius: 5px;
+
+        .allDataTable{
+            border-collapse: collapse;
+            tr{
+                &:hover{
+                    background: #CCC;
+                    cursor: pointer;
+                }
+                td{
+                    padding: 5px 20px;
+                }
+            }
+        }
         
-        font-size: 20px;
-        font-weight: 700;
-        transition: all .4s ease;
-        &:hover{
-            color: #CCC;
+    }
+
+    .newMedicine{
+        display: none;
+        width: 300px;
+        height: 300px;
+        background: #FFF;
+    }
+    
+}
+
+
+
+
+
+
+
+
+.navbar{
+    background: var(--mainBtnColor);
+        padding: 15px 30px;
+        vertical-align: middle;
+        height: 300px;
+    .text{
+        display: flex;
+        
+        justify-content: space-between;
+        
+        .navbarBrand{
+            
+            font-size: 20px;
+            font-weight: 700;
+            transition: all .4s ease;
+            &:hover{
+                color: #CCC;
+            }
+        }
+    }
+    .logo{
+        display: flex;
+        width: 100%;
+        img{
+            justify-content: center;
+            margin: 0 auto;
+            width: 150px;
         }
     }
 }
@@ -44,6 +108,7 @@ input, button{ border:none; outline:none;}
         width: 85%;
         margin: 20px auto;
         .panelBtn{
+            margin-top: -100px;
             display: flex;
             flex-direction: row;
             li{
@@ -56,16 +121,16 @@ input, button{ border:none; outline:none;}
                 font-weight: 300;
                 transition: all .4s ease;
                 &:hover{
-                    background: var(--mainBtnColor);
+                    background: var(--secondaryBtnColor);
                 }
                 &.active{
-                    background: var(--mainBtnColor);
+                    background: var(--secondaryBtnColor);
                 }
             }
         }
         .dashboard{
             padding-bottom: 30px;
-            background: rgba(255, 255, 255, 0.575);
+            background: rgb(255, 255, 255);
             border-radius: 5px 5px 0 0 ;
             box-shadow: 0px 5px 3px #888888;
             h2{
@@ -156,11 +221,21 @@ input, button{ border:none; outline:none;}
                     flex-direction: row;
                     justify-content: space-between;
                     width: 80%;
+                    .registerError{
+                        background: rgb(248, 157, 157);
+                        border: 1px solid rgb(255, 3, 3);
+                        color: #FFF;
+                        padding: 2px 5px;
+                        text-align: center;
+                        font-size: 13px;
+                        border-radius: 5px;
+                    }
 
                     .contactData{
                         width: 45%;
                         display: flex;
                         flex-direction: column;
+                        
                         .dateBirth{
                             display: flex;
                             flex-direction: row;
@@ -169,6 +244,24 @@ input, button{ border:none; outline:none;}
                                 width: 20%;
                             }
                             
+                        }
+                        .sameAdress{
+                            text-align: center;
+                            width: 200px;
+                            background: rgb(73, 223, 190);
+                            text-align: center;
+                            color: #FFF;
+                            padding: 10px 20px;
+                            box-shadow: 0px 1px 1px #000;
+                            cursor: pointer;
+                            margin: 20px auto;
+                            transition: all .4s ease;
+                            &:hover{
+                                background: rgb(41, 126, 107);
+                            }
+                            &:active{
+                                background: rgb(61, 19, 19);
+                            }
                         }
                         .createPatientBtn{
                             background: var(--mainBtnColor);
@@ -181,6 +274,9 @@ input, button{ border:none; outline:none;}
                             transition: all .4s ease;
                             &:hover{
                                 background: var(--secondaryBtnColor);
+                            }
+                            &:active{
+                                background: rgb(177, 209, 177);
                             }
                         }
                     }
@@ -260,10 +356,106 @@ input, button{ border:none; outline:none;}
                             width: fit-content;
                             float: right;
                             cursor: pointer;
+                            &:active{
+                                background: rgb(255, 0, 0);
+                            }
                         }
                     }
                   }
               }
+        }
+    }
+}
+
+.containerPatient{
+    box-shadow: 0px 5px 3px #888888;
+    border-radius: 5px;
+    background: #FFF;
+    width: 80%;
+    margin: -100px auto;
+    padding: 20px;
+    .diagnostics{
+        margin-left: 20px;
+    }
+    .personalDataTable{
+        box-shadow: 0px 5px 3px #888888;
+        margin: 0 auto;
+        margin-top: 50px;
+        width: 600px;
+        padding: 20px;
+        border-collapse: collapse;
+        tr{
+            cursor: pointer;
+            transition: all .4s ease;
+            &:hover{
+                background:rgb(136, 228,  185);
+            }
+            td{
+                padding: 10px 40px;
+            }
+        }
+    }
+    .showAllData{
+        box-shadow: 0px 2px 4px #888888;
+        background:var(--mainBtnColor);
+        width: 600px;
+        margin: 0 auto;
+        margin-bottom: 50px;
+        padding: 10px 20px;
+        color: #FFF;
+        text-align: center;
+        cursor: pointer;
+        transition: all .4s ease;
+        &:hover{
+            background:var(--secondaryBtnColor);
+        }
+    }
+    .newMedicineBtn{
+        text-align: center;
+        width: 300px;
+        background:var(--mainBtnColor);
+        text-align: center;
+        color: #FFF;
+        padding: 10px 20px;
+        box-shadow: 0px 1px 1px #000;
+        cursor: pointer;
+        margin: 20px auto;
+        transition: all .4s ease;
+        &:hover{
+            background:var(--secondaryBtnColor);
+        }
+        &:active{
+            background:rgb(32, 78, 67);
+        }
+    }
+    .medicineList{
+        box-shadow: 0px 5px 3px #888888;
+        margin: 0 auto;
+        margin-top: 50px;
+        width: 600px;
+        padding: 20px;
+        border-collapse: collapse;
+        
+        
+
+        tr{
+            td{
+                padding: 10px 40px;
+            }
+            .daysMedicine{
+                display: flex;
+                justify-content: space-around;
+                div{
+                    border-radius: 5px;
+                    vertical-align: middle;;
+                    padding: 10px;
+                    background: var(--mainBtnColor);
+                    &.active{
+                        background: var(--secondaryBtnColor);
+                        color: #FFF;
+                    }
+                }
+            }
         }
     }
 }

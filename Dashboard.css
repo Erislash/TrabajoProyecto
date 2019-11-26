@@ -22,23 +22,62 @@ input, button {
   border: none;
   outline: none; }
 
-.navbar {
+.lightBox {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center; }
+  .lightBox .allData {
+    padding: 20px;
+    display: inline-block;
+    width: 800px;
+    max-height: 400px;
+    overflow: auto;
+    background: #FFF;
+    border-radius: 5px; }
+    .lightBox .allData .allDataTable {
+      border-collapse: collapse; }
+      .lightBox .allData .allDataTable tr:hover {
+        background: #CCC;
+        cursor: pointer; }
+      .lightBox .allData .allDataTable tr td {
+        padding: 5px 20px; }
+  .lightBox .newMedicine {
+    display: none;
+    width: 300px;
+    height: 300px;
+    background: #FFF; }
+
+.navbar {
   background: var(--mainBtnColor);
   padding: 15px 30px;
-  vertical-align: middle; }
-  .navbar .navbarBrand {
-    font-size: 20px;
-    font-weight: 700;
-    transition: all .4s ease; }
-    .navbar .navbarBrand:hover {
-      color: #CCC; }
+  vertical-align: middle;
+  height: 300px; }
+  .navbar .text {
+    display: flex;
+    justify-content: space-between; }
+    .navbar .text .navbarBrand {
+      font-size: 20px;
+      font-weight: 700;
+      transition: all .4s ease; }
+      .navbar .text .navbarBrand:hover {
+        color: #CCC; }
+  .navbar .logo {
+    display: flex;
+    width: 100%; }
+    .navbar .logo img {
+      justify-content: center;
+      margin: 0 auto;
+      width: 150px; }
 
 .container main {
   width: 85%;
   margin: 20px auto; }
   .container main .panelBtn {
+    margin-top: -100px;
     display: flex;
     flex-direction: row; }
     .container main .panelBtn li {
@@ -51,12 +90,12 @@ input, button {
       font-weight: 300;
       transition: all .4s ease; }
       .container main .panelBtn li:hover {
-        background: var(--mainBtnColor); }
+        background: var(--secondaryBtnColor); }
       .container main .panelBtn li.active {
-        background: var(--mainBtnColor); }
+        background: var(--secondaryBtnColor); }
   .container main .dashboard {
     padding-bottom: 30px;
-    background: rgba(255, 255, 255, 0.575);
+    background: white;
     border-radius: 5px 5px 0 0;
     box-shadow: 0px 5px 3px #888888; }
     .container main .dashboard h2 {
@@ -122,6 +161,14 @@ input, button {
         flex-direction: row;
         justify-content: space-between;
         width: 80%; }
+        .container main .dashboard .addPatient .newPatient .registerError {
+          background: #f89d9d;
+          border: 1px solid #ff0303;
+          color: #FFF;
+          padding: 2px 5px;
+          text-align: center;
+          font-size: 13px;
+          border-radius: 5px; }
         .container main .dashboard .addPatient .newPatient .contactData {
           width: 45%;
           display: flex;
@@ -132,6 +179,21 @@ input, button {
             justify-content: space-between; }
             .container main .dashboard .addPatient .newPatient .contactData .dateBirth select {
               width: 20%; }
+          .container main .dashboard .addPatient .newPatient .contactData .sameAdress {
+            text-align: center;
+            width: 200px;
+            background: #49dfbe;
+            text-align: center;
+            color: #FFF;
+            padding: 10px 20px;
+            box-shadow: 0px 1px 1px #000;
+            cursor: pointer;
+            margin: 20px auto;
+            transition: all .4s ease; }
+            .container main .dashboard .addPatient .newPatient .contactData .sameAdress:hover {
+              background: #297e6b; }
+            .container main .dashboard .addPatient .newPatient .contactData .sameAdress:active {
+              background: #3d1313; }
           .container main .dashboard .addPatient .newPatient .contactData .createPatientBtn {
             background: var(--mainBtnColor);
             text-align: center;
@@ -143,6 +205,8 @@ input, button {
             transition: all .4s ease; }
             .container main .dashboard .addPatient .newPatient .contactData .createPatientBtn:hover {
               background: var(--secondaryBtnColor); }
+            .container main .dashboard .addPatient .newPatient .contactData .createPatientBtn:active {
+              background: #b1d1b1; }
         .container main .dashboard .addPatient .newPatient .medicalData {
           width: 45%;
           display: flex;
@@ -199,5 +263,79 @@ input, button {
             width: fit-content;
             float: right;
             cursor: pointer; }
+            .container main .dashboard .addPatient .newPatient .actualDiagnostics .deleteDiagnostic:active {
+              background: red; }
+
+.containerPatient {
+  box-shadow: 0px 5px 3px #888888;
+  border-radius: 5px;
+  background: #FFF;
+  width: 80%;
+  margin: -100px auto;
+  padding: 20px; }
+  .containerPatient .diagnostics {
+    margin-left: 20px; }
+  .containerPatient .personalDataTable {
+    box-shadow: 0px 5px 3px #888888;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 600px;
+    padding: 20px;
+    border-collapse: collapse; }
+    .containerPatient .personalDataTable tr {
+      cursor: pointer;
+      transition: all .4s ease; }
+      .containerPatient .personalDataTable tr:hover {
+        background: #88e4b9; }
+      .containerPatient .personalDataTable tr td {
+        padding: 10px 40px; }
+  .containerPatient .showAllData {
+    box-shadow: 0px 2px 4px #888888;
+    background: var(--mainBtnColor);
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    color: #FFF;
+    text-align: center;
+    cursor: pointer;
+    transition: all .4s ease; }
+    .containerPatient .showAllData:hover {
+      background: var(--secondaryBtnColor); }
+  .containerPatient .newMedicineBtn {
+    text-align: center;
+    width: 300px;
+    background: var(--mainBtnColor);
+    text-align: center;
+    color: #FFF;
+    padding: 10px 20px;
+    box-shadow: 0px 1px 1px #000;
+    cursor: pointer;
+    margin: 20px auto;
+    transition: all .4s ease; }
+    .containerPatient .newMedicineBtn:hover {
+      background: var(--secondaryBtnColor); }
+    .containerPatient .newMedicineBtn:active {
+      background: #204e43; }
+  .containerPatient .medicineList {
+    box-shadow: 0px 5px 3px #888888;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 600px;
+    padding: 20px;
+    border-collapse: collapse; }
+    .containerPatient .medicineList tr td {
+      padding: 10px 40px; }
+    .containerPatient .medicineList tr .daysMedicine {
+      display: flex;
+      justify-content: space-around; }
+      .containerPatient .medicineList tr .daysMedicine div {
+        border-radius: 5px;
+        vertical-align: middle;
+        padding: 10px;
+        background: var(--mainBtnColor); }
+        .containerPatient .medicineList tr .daysMedicine div.active {
+          background: var(--secondaryBtnColor);
+          color: #FFF; }
 
 /*# sourceMappingURL=Dashboard.css.map */

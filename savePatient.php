@@ -57,40 +57,40 @@
         $errors = array();
 
         if(empty($name) || is_numeric($name) || preg_match("/[0-9]/", $name)){
-            $errors['name'] = "Nombre Inválido";
+            $errors['name'] = "<div class='registerError'>Nombre Inválido</div>";
         }
 
         if(empty($surname) || is_numeric($surname) || preg_match("/[0-9]/", $surname)){
-            $errors['surname'] = "Apellido Inválido";
+            $errors['surname'] = "<div class='registerError'>Apellido Inválido</div>";
         }
 
         if(empty($birthDay) || !is_numeric($birthDay) || !preg_match("/^[1-9][0-9]*$/", $birthDay)){
             if(empty($birthMonth) || !is_numeric($birthMonth) || !preg_match("/^[1-9][0-9]*$/", $birthMonth)){
                 if(empty($birthYear) || !is_numeric($birthYear) || !preg_match("/^[1-9][0-9]*$/", $birthYear)){
-                    $errors['birthDay'] = "La fecha de nacimiento no es válida";
+                    $errors['birthDay'] = "<div class='registerError'>La fecha de nacimiento no es válida</div>";
                 }
             }
         }
 
         if(empty($gender) || is_numeric($gender) || preg_match("/[0-9]/", $gender)){
-            $errors['gender'] = "Género Inválido";
+            $errors['gender'] = "<div class='registerError'>Género Inválido</div>";
         }
 
         if(strlen((string)$idCardNumber) > 8 || empty($idCardNumber) || !is_numeric($idCardNumber) || !preg_match("/^[1-9][0-9]*$/", $idCardNumber)){
-            $errors['idCardNumber'] = "El número de DNI no es válido";
+            $errors['idCardNumber'] = "<div class='registerError'>El Número de DNI no es Válido</div>";
         }
 
 
         if(empty($homePhone) || !is_numeric($homePhone) || !preg_match("/[0-9]/", $homePhone)){
-            $errors['homePhone'] = "El número de teléfono no es Válido";
+            $errors['homePhone'] = "<div class='registerError'>El Número de Teléfono no es Válido</div>";
         }
 
         if(empty($mobilePhone) || !is_numeric($mobilePhone) || !preg_match("/[0-9]/", $mobilePhone)){
-            $errors['mobilePhone'] = "El número de teléfono celular no es Válido";
+            $errors['mobilePhone'] = "<div class='registerError'>El Número de Teléfono Velular no es Válido</div>";
         }
 
         if(empty($email) || !(filter_var($email, FILTER_VALIDATE_EMAIL))){
-            $errors['email'] = "El email no es válido";
+            $errors['email'] = "<div class='registerError'>El Email no es Válido</div>";
         }
 
         $legalAdress = "";
@@ -98,9 +98,10 @@
         $buildingAdress = true;
         if((empty($streetNumber) || !is_numeric($streetNumber) || !(preg_match("/[0-9]/", $streetNumber))) || 
             (empty($streetName) || is_numeric($streetName) || preg_match("/[0-9]/", $streetName))){
-                $errors['adress'] = "Domicilio legal inválido";
+                $errors['adress'] = "<div class='registerError'>Domicilio Legal no es Válido</div>";
                 $buildingAdress = false;
-                $legalAdress = "Domicilio INVÁLIDO";
+        }else{
+            $legalAdress = $streetNameContact." ".$streetNumberContact;
         }
         if($buildingAdress){
             $adress = $streetName." ".$streetNumber;
@@ -111,16 +112,16 @@
             }
         }
         if(empty($postalCode) || !is_numeric($postalCode) || !preg_match("/^[1-9][0-9]*$/", $postalCode)){
-            $errors['postalCode'] = "El código postal es Inválido";
+            $errors['postalCode'] = "<div class='registerError'>El Código Postal no es Válido</div>";
         }
         if(empty($city) || is_numeric($city) || preg_match("/[0-9]/", $city)){
-            $errors['city'] = "Ciudad Inválida";
+            $errors['city'] = "<div class='registerError'>Ciudad no Válida</div>";
         }
         if(empty($state) || is_numeric($state) || preg_match("/[0-9]/", $state)){
-            $errors['state'] = "Provincia/Estado Inválido";
+            $errors['state'] = "<div class='registerError'>La Provincia/Estado no es Válido</div>";
         }
         if(empty($country) || is_numeric($country) || preg_match("/[0-9]/", $country)){
-            $errors['country'] = "País Inválido";
+            $errors['country'] = "<div class='registerError'>El País no es Válido</div>";
         }
 
 
@@ -128,7 +129,7 @@
         $contactBuildingAdress = true;
         if((empty($streetNumberContact) || !is_numeric($streetNumberContact) || !(preg_match("/[0-9]/", $streetNumberContact))) || 
             (empty($streetNameContact) || is_numeric($streetNameContact) || preg_match("/[0-9]/", $streetNameContact))){
-                $errors['adressContact'] = "Domicilio de contacto inválido";
+                $errors['adressContact'] = "<div class='registerError'>El Domicilio de Contacto no es Válido</div>";
                 $contactBuildingAdress = false;
         }
         if($contactBuildingAdress){
@@ -140,51 +141,56 @@
             }
         }
         if(empty($postalCodeContact) || !is_numeric($postalCodeContact) || !preg_match("/^[1-9][0-9]*$/", $postalCodeContact)){
-            $errors['postalCodeContact'] = "Código postal de Contacto Inválido";
+            $errors['postalCodeContact'] = "<div class='registerError'>El Código postal de Contacto no es Válido</div>";
         }
         if(empty($cityContact) || is_numeric($cityContact) || preg_match("/[0-9]/", $cityContact)){
-            $errors['cityContact'] = "Ciudad de Contacto Inválida";
+            $errors['cityContact'] = "<div class='registerError'>La Ciudad de Contacto no es Válida</div>";
         }
         if(empty($stateContact) || is_numeric($stateContact) || preg_match("/[0-9]/", $stateContact)){
-            $errors['stateContact'] = "Provincia/Estado de Contacto Inválido";
+            $errors['stateContact'] = "<div class='registerError'>Provincia/Estado de Contacto Inválido</div>";
         }
         if(empty($countryContact) || is_numeric($countryContact) || preg_match("/[0-9]/", $countryContact)){
-            $errors['countryContact'] = "País de Contacto Inválido";
+            $errors['countryContact'] = "<div class='registerError'>País de Contacto Inválido</div>";
         }
 
 
 
         if(empty($user)){
-            $errors['user'] = "Debe Ingresar un Usuario";
+            $errors['user'] = "<div class='registerError'>Debe Ingresar un Usuario</div>";
         }
         if(empty($password))
-            $errors['password'] = "Debe Ingresar una Contraseña";
+            $errors['password'] = "<div class='registerError'>Debe Ingresar una Contraseña</div>";
         else{
             if(strlen((string)$password) >= 8){
                 if($password != $rePassword)
-                    $errors['password'] = "Las contraseñas no concuerdan";
+                    $errors['password'] = "<div class='registerError'>Las Contraseñas no Coinciden</div>";
             }else
-                $errors['password'] = "La Contraseña Debe Tener al Menos 8 Caracteres";
+                $errors['password'] = "<div class='registerError'>La Contraseña Debe Tener al Menos 8 Caracteres</div>";
         }
 
         
         if(empty($hardwareId))
-            $errors['hardwareId'] = "Debe Asignarle al Paciente un Dispositivo";
+            $errors['hardwareId'] = "<div class='registerError'>Debe Asignarle al Paciente un Dispositivo</div>";
         
 
         if(empty($diagnostics))
-            $errors['diagnostics'] = "No asigno ningún diagnóstico";
+            $errors['diagnostics'] = "<div class='registerError'>No Asignó Ningún Diagnóstico</div>";
         
+            
         $saveUser = false;
         $message = "";
+
+
+        $birthDate = "$birthYear-$birthMonth-$birthDay 12:00:00";
+
+
 		if(count($errors) == 0){
             $saveUser = true;
 
-            $birthDate = "$birthYear-$birthMonth-$birthDay";
-            $birthDate = strtotime($birthDate);
-
             if(!isset($errors['password']))
             $securePassword = password_hash($password, PASSWORD_BCRYPT, ['cost'=>12]);
+
+            
 
             $diag = "";
             foreach($diagnostics as $diagnostic){

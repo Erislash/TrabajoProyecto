@@ -139,7 +139,20 @@ selectDefault.parent().change(function(){
 });
 
 
+let sameAdressBtn = $('#sameAdress');
+sameAdressBtn.click(function(){
+    // $("input[value='streetNameContact']").text($("input[value='streetName']").text());
 
+    $('#streetNameContact').val($('#streetName').val());
+    $('#streetNumberContact').val($('#streetNumber').val());
+    $('#departamentNumberContact').val($('#departamentNumber').val());
+    $('#floorNumberContact').val($('#floorNumber').val());
+    $('#postalCodeContact').val($('#postalCode').val());
+    $('#cityContact').val($('#city').val());
+    $('#stateContact').val($('#state').val());
+    $('#countryContact').val($('#country').val());
+
+});
 
 
 
